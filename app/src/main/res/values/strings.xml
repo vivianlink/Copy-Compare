@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Copy&amp;Compare</string>
     <string name="start_btn">start</string>
+    <string name="level_1">level 1</string>
     <string name="clear_btn">clear</string>
+    <string name="instruction_msg">Try to copy this image as closely as possible!</string>
     <color name="yellow">#fff9a4</color>
 </resources>

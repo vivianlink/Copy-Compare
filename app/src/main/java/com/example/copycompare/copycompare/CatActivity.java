@@ -13,7 +13,7 @@ public class CatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cat);
     }
 
-    public void clickStart(View view){
+    public void clickOK(View view){
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }
