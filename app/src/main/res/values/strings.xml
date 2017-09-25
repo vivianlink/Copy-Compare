@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Copy&amp;Compare</string>
     <string name="start_btn">start</string>
-    <color name="baby_blue">#d7f1ff</color>
+    <string name="clear_btn">clear</string>
+    <color name="yellow">#fff9a4</color>
 </resources>
