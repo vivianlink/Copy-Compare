@@ -34,5 +34,13 @@
             android:onClick="clearCanvas"
             android:text="@string/clear_btn" />
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="74dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom|start"
+            app:srcCompat="@drawable/cat"
+            tools:ignore="ContentDescription" />
+
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>
