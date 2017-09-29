@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/yellow"
     android:layout_height="match_parent"
     tools:context="com.example.copycompare.copycompare.GameActivity">
 
@@ -34,12 +35,23 @@
             android:onClick="clearCanvas"
             android:text="@string/clear_btn" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="74dp"
-            android:layout_height="100dp"
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:onClick="clearCanvas"
+            android:text="@string/submit_btn" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="100dp"
+            android:layout_height="106dp"
             android:layout_gravity="bottom|start"
-            app:srcCompat="@drawable/cat"
+            android:background="@drawable/cat"
+            android:onClick="clickCat"
             tools:ignore="ContentDescription" />
 
     </FrameLayout>

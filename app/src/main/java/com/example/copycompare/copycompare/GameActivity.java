@@ -1,5 +1,6 @@
 package com.example.copycompare.copycompare;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,10 @@ public class GameActivity extends AppCompatActivity {
 
     public void clearCanvas(View v) {
         customCanvas.clearCanvas();
+    }
+    public void clickCat(View view){
+        Intent intent = new Intent(this, CatActivity.class);
+        startActivity(intent);
     }
 
 }
