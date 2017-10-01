@@ -109,4 +109,13 @@ public class CanvasView extends View {
         }
         return true;
     }
+
+    public Bitmap getBitmap() {
+        this.setDrawingCacheEnabled(true);
+        this.buildDrawingCache();
+        Bitmap bmp = Bitmap.createBitmap(this.getDrawingCache());
+        this.setDrawingCacheEnabled(false);
+
+        return bmp;
+    }
 }
