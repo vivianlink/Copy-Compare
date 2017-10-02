@@ -10,11 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 public class GameActivity extends AppCompatActivity {
 
-    private String catFilePath = "/app/src/main/res/drawable/cat.png";
+    private String catFileName = "/cat.png";
     private CanvasView customCanvas;
 
     @Override
@@ -35,12 +36,25 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void clickSubmit(View view){
-        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap(catFilePath))), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap(catFileName))), Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, ResultActivity.class);
+
+        saveBitmap(intent);
+        startActivity(intent);
     }
 
-    public Bitmap imageToBitmap(String filePath){
-        Bitmap bMap = BitmapFactory.decodeFile(filePath);
+    private Bitmap imageToBitmap(String fileName){
+        String fname =this.getFilesDir().getAbsolutePath()+ fileName;
+        Bitmap bMap = BitmapFactory.decodeFile(fileName);
         return bMap;
+    }
+
+    private void saveBitmap(Intent intent){
+        Bitmap bmp = customCanvas.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        intent.putExtra("drawing", byteArray);
     }
 
     public int compareBitmap(Bitmap drawing, Bitmap actualImage){
