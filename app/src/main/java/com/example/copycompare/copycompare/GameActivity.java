@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,7 +16,6 @@ import java.io.File;
 
 public class GameActivity extends AppCompatActivity {
 
-    private String catFileName = "/cat.png";
     private CanvasView customCanvas;
 
     @Override
@@ -36,7 +36,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void clickSubmit(View view){
-        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap(catFileName))), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap("cat"))), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ResultActivity.class);
 
         saveBitmap(intent);
@@ -44,9 +44,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private Bitmap imageToBitmap(String fileName){
-        String fname =this.getFilesDir().getAbsolutePath()+ fileName;
-        Bitmap bMap = BitmapFactory.decodeFile(fileName);
-        return bMap;
+        int imageID = getResources().getIdentifier(fileName, "drawable", getPackageName());
+        return BitmapFactory.decodeResource(getResources(), imageID);
     }
 
     private void saveBitmap(Intent intent){
@@ -57,9 +56,37 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("drawing", byteArray);
     }
 
-    public int compareBitmap(Bitmap drawing, Bitmap actualImage){
-        int precision = -1;
+    public double compareBitmap(Bitmap drawing, Bitmap actualImage){
 
+
+        int aHeight;
+        int aWidth;
+        double precision = 0;
+
+        if (actualImage.getHeight() < drawing.getHeight()){
+            aHeight = actualImage.getHeight();
+        } else {
+            aHeight = drawing.getHeight();
+        }
+
+        if (actualImage.getWidth() < drawing.getWidth()){
+            aWidth = actualImage.getWidth();
+        } else {
+            aWidth = drawing.getWidth();
+        }
+
+        for (int y = 0; y < aHeight; y++) {
+            for (int x = 0; x < aWidth; x++) {
+
+                int drawingColor = drawing.getPixel(x, y);
+                int actualImageColor = actualImage.getPixel(x, y);
+                int r1 = Color.red(drawingColor);
+                int r2 = Color.red(actualImageColor);
+                if (r1 == r2) {
+                    precision += 1;
+                }
+            }
+        }
         return precision;
     }
 }

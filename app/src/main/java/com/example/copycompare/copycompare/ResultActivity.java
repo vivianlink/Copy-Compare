@@ -12,15 +12,13 @@ import java.io.File;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private String catFile = "/cat.png";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
         ImageView oriImg = (ImageView) findViewById(R.id.oriImg);
-        oriImg.setImageBitmap(pngToBitmap(catFile));
+        oriImg.setImageBitmap(pngToBitmap("cat"));
         saveDrawnImage();
     }
 
@@ -35,9 +33,7 @@ public class ResultActivity extends AppCompatActivity {
     }
 
     public Bitmap pngToBitmap(String fileName){
-        String fname =this.getFilesDir().getAbsolutePath()+ catFile;
-        Toast.makeText(this, fname, Toast.LENGTH_LONG).show();
-        Bitmap bMap = BitmapFactory.decodeFile(fname);
-        return bMap;
+        int imageID = getResources().getIdentifier(fileName, "drawable", getPackageName());
+        return BitmapFactory.decodeResource(getResources(), imageID);
     }
 }
