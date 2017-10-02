@@ -36,10 +36,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void clickSubmit(View view){
-        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap("cat"))), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,String.valueOf(compareBitmap(customCanvas.getBitmap(), imageToBitmap("cat"))), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, ResultActivity.class);
 
         saveBitmap(intent);
+        saveScore(intent);
         startActivity(intent);
     }
 
@@ -56,12 +57,16 @@ public class GameActivity extends AppCompatActivity {
         intent.putExtra("drawing", byteArray);
     }
 
-    public double compareBitmap(Bitmap drawing, Bitmap actualImage){
+    private void saveScore(Intent intent){
+        intent.putExtra("score", compareBitmap(customCanvas.getBitmap(), imageToBitmap("cat")));
+    }
+
+    public int compareBitmap(Bitmap drawing, Bitmap actualImage){
 
 
         int aHeight;
         int aWidth;
-        double precision = 0;
+        int precision = 0;
 
 
         if (actualImage.getHeight() < drawing.getHeight()){
@@ -88,7 +93,6 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
-        double percentage = precision/ totalPixel * 100;
-        return percentage;
+        return precision;
     }
 }

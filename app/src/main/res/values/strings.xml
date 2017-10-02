@@ -7,6 +7,7 @@
     <string name="clear_btn">clear</string>
     <string name="instruction_msg">Try to copy this image as closely as possible!</string>
     <string name="submit_btn">submit</string>
+    <string name="cool">Cool!</string>
     <color name="yellow">#fff9a4</color>
     <color name="blue">#8fbedd</color>
 </resources>

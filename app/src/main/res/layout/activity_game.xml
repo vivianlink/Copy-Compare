@@ -24,7 +24,7 @@
         <com.example.copycompare.copycompare.CanvasView
             android:id="@+id/drawing_canvas"
             android:layout_width="366dp"
-            android:layout_height="447dp"
+            android:layout_height="350dp"
             android:textColor="#FFFFFF" />
 
         <Button
