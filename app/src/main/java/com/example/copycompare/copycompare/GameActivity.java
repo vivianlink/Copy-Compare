@@ -63,6 +63,7 @@ public class GameActivity extends AppCompatActivity {
         int aWidth;
         double precision = 0;
 
+
         if (actualImage.getHeight() < drawing.getHeight()){
             aHeight = actualImage.getHeight();
         } else {
@@ -75,18 +76,19 @@ public class GameActivity extends AppCompatActivity {
             aWidth = drawing.getWidth();
         }
 
+        double totalPixel = aHeight * aWidth;
+
         for (int y = 0; y < aHeight; y++) {
             for (int x = 0; x < aWidth; x++) {
 
                 int drawingColor = drawing.getPixel(x, y);
                 int actualImageColor = actualImage.getPixel(x, y);
-                int r1 = Color.red(drawingColor);
-                int r2 = Color.red(actualImageColor);
-                if (r1 == r2) {
+                if (drawingColor == actualImageColor && drawingColor != 0) {
                     precision += 1;
                 }
             }
         }
-        return precision;
+        double percentage = precision/ totalPixel * 100;
+        return percentage;
     }
 }
