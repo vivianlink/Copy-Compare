@@ -8,6 +8,12 @@
     <string name="instruction_msg">Try to copy this image as closely as possible!</string>
     <string name="submit_btn">submit</string>
     <string name="cool">Cool!</string>
+    <string name="easy">EASY</string>
+    <string name="hard">HARD</string>
+    <string name="level_3">level 3</string>
+    <string name="try_again">Try Again!</string>
+    <string name="level_2">level 2</string>
     <color name="yellow">#fff9a4</color>
     <color name="blue">#8fbedd</color>
+    <color name="powder_blue">#c2f1e8</color>
 </resources>

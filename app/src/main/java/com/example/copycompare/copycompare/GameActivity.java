@@ -3,16 +3,12 @@ package com.example.copycompare.copycompare;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
+import android.view.Window;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -21,8 +17,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_game);
-
         customCanvas = (CanvasView) findViewById(R.id.drawing_canvas);
     }
 
@@ -59,6 +55,15 @@ public class GameActivity extends AppCompatActivity {
 
     private void saveScore(Intent intent){
         intent.putExtra("score", compareBitmap(customCanvas.getBitmap(), imageToBitmap("cat")));
+    }
+
+    private void getTracing(){
+        Bundle extras = getIntent().getExtras();
+        String difficulty = extras.getString("difficulty");
+        if (difficulty == "easy"){
+
+        } else {
+        }
     }
 
     public int compareBitmap(Bitmap drawing, Bitmap actualImage){
