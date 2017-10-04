@@ -1,4 +1,4 @@
-# Copy-Compare 
+# Copy&Compare 
 
 Copy&amp;Compare is an interactive android game that tests user drawing skills by showing them a picture and making them copy it as closely as possible. The user will then receive stars for their drawing. If the user receive 2 or more star. They passed.
 <br><br>The game comes in 2 mode - 'easy' and 'hard' and each mode has 3 different level, as follow: 
